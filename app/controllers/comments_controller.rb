@@ -4,28 +4,32 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
+    @tech = Tech.find(params[:tech_id])
     @comments = Comment.all
   end
 
   # GET /comments/1
   # GET /comments/1.json
   def show
+    @tech = Tech.find(params[:tech_id])
   end
 
   # GET /comments/new
   def new
-    @user = User.find(params[:user_id])
+    @tech = Tech.find(params[:tech_id])
     @comment = Comment.new
   end
 
   # GET /comments/1/edit
   def edit
+    @tech = Tech.find(params[:tech_id])
   end
 
   # POST /comments
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
+    @tech = Tech.find(params[:tech_id])
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
@@ -42,7 +46,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to teches_path, notice: 'Comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit }

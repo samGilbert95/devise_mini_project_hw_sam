@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
-  belongs_to :teches
-  belongs_to :users
+  belongs_to :tech
+  belongs_to :user
 
   validates :body,presence: true, :length => {:in => 1..240}
 end
