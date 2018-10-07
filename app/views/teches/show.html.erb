@@ -20,14 +20,11 @@
   <%= @tech.desc %>
 </p>
 
-<p>
-  <strong>Logo:</strong>
-  <%= @tech.logo %>
-</p>
+<%= image_tag(@tech.logo) %>
 
 <p>
   <strong>User:</strong>
-  <%= @tech.user_id %>
+  <%= @tech.user.first_name %>
 </p>
 
 <%= link_to 'Edit', edit_tech_path(@tech) %> |

@@ -25,7 +25,6 @@ class TechesController < ApplicationController
   # POST /teches.json
   def create
     @tech = Tech.new(tech_params)
-
     respond_to do |format|
       if @tech.save
         format.html { redirect_to @tech, notice: 'Tech was successfully created.' }
