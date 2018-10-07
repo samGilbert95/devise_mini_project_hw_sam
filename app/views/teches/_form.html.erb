@@ -1,0 +1,47 @@
+<%= form_with(model: tech, local: true) do |form| %>
+  <% if tech.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tech.errors.count, "error") %> prohibited this tech from being saved:</h2>
+
+      <ul>
+      <% tech.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :technology %>
+    <%= form.text_field :technology %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_created %>
+    <%= form.date_select :date_created %>
+  </div>
+
+  <div class="field">
+    <%= form.label :version %>
+    <%= form.number_field :version %>
+  </div>
+
+  <div class="field">
+    <%= form.label :desc %>
+    <%= form.text_area :desc %>
+  </div>
+
+  <div class="field">
+    <%= form.label :logo %>
+    <%= form.file_field :logo %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.number_field :user_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

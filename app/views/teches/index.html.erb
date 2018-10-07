@@ -1,0 +1,38 @@
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<h1>Teches</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Technology</th>
+      <th>Date created</th>
+      <th>Version</th>
+      <th>Desc</th>
+      <th>Logo</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teches.each do |tech| %>
+      <tr>
+        <td><%= tech.technology %></td>
+        <td><%= tech.date_created %></td>
+        <td><%= tech.version %></td>
+        <td><%= tech.desc %></td>
+        <td><%= tech.logo %></td>
+        <td><%= tech.user_id %></td>
+        <td><%= link_to 'Show', tech %></td>
+        <td><%= link_to 'Edit', edit_tech_path(tech) %></td>
+        <td><%= link_to 'Destroy', tech, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'New Tech', new_tech_path %>
+</div>
