@@ -32,7 +32,11 @@
 <h3 style="text-decoration:underline;"><%= @tech.technology%>'s Comments</h3>
 <% @tech.comments.each do |comment| %>
   <ul>
-    <%= link_to edit_tech_comment_path(comment.tech_id,comment.id) do %>
+    <% if @tech.user.id == current_user.id %>
+      <%= link_to edit_tech_comment_path(comment.tech_id,comment.id) do %>
+      <%= comment.body %>
+    <% end %>
+    <% else %>
       <%= comment.body %>
     <% end %>
   </ul>
