@@ -1,32 +1,24 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 
-  # GET /comments
-  # GET /comments.json
   def index
     @tech = Tech.find(params[:tech_id])
     @comments = Comment.all
   end
 
-  # GET /comments/1
-  # GET /comments/1.json
   def show
     @tech = Tech.find(params[:tech_id])
   end
 
-  # GET /comments/new
   def new
     @tech = Tech.find(params[:tech_id])
     @comment = Comment.new
   end
 
-  # GET /comments/1/edit
   def edit
     @tech = Tech.find(params[:tech_id])
   end
 
-  # POST /comments
-  # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
     @tech = Tech.find(params[:tech_id])
@@ -41,8 +33,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /comments/1
-  # PATCH/PUT /comments/1.json
   def update
     respond_to do |format|
       if @comment.update(comment_params)
@@ -55,8 +45,6 @@ class CommentsController < ApplicationController
     end
   end
 
-  # DELETE /comments/1
-  # DELETE /comments/1.json
   def destroy
     @comment.destroy
     respond_to do |format|
@@ -66,12 +54,11 @@ class CommentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_comment
       @comment = Comment.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:tech_id, :user_id, :body)
     end
